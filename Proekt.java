@@ -1,0 +1,66 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package proekt;
+
+import java.util.Random;
+
+/**
+ *
+ * @author Boyanvb1
+ */
+public class Proekt {
+
+    /**
+     * @param args the command line arguments
+     */
+    Random generator = new Random();
+    private int length;
+ 
+    public void setLength(int lengths) {
+        if (lengths > 0) {
+            length = lengths;
+        }
+    }
+ 
+    public Proekt() {
+        this(18);
+    }
+ 
+    public Proekt(int length) {
+        setLength(length);
+    }
+ 
+    public int [][] Random() {
+        
+ 
+        int save[][] = new int[2][18];
+        save[0][0] = generator.nextInt(9);
+        save[1][0] = generator.nextInt(9);
+        for (int i = 0; i <18; i++) 
+        {
+            int p = generator.nextInt(9);
+            int m = generator.nextInt(9);
+            for (int j = 0; j <  18; j++) {
+                boolean flag = false;
+                if(p == save[0][j] && m ==save[1][j])
+                {
+                    flag=true; 
+                }
+                if(flag==true)
+                {
+                    p=generator.nextInt(9);
+                    m=generator.nextInt(9);
+                    j=0;
+                }
+                
+            }
+           save[0][i]=p;
+            save[1][i]=m;
+        }
+        return save;
+    }
+    
+    
+}
