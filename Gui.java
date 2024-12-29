@@ -11,6 +11,8 @@ import java.awt.event.KeyListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -64,6 +66,13 @@ public class Gui {
                     @Override
                     public void keyPressed(KeyEvent button) {
                         if (button.getKeyCode() == KeyEvent.VK_ENTER) {
+                            String check = arr[button.getComponent().getX()][button.getComponent().getY()].getText();
+                            Pattern p = Pattern.compile("\\d{1}$");
+                            Matcher m = p.matcher(check);
+                            boolean cifra = m.matches();
+                            if(cifra==false){
+                                JOptionPane.showMessageDialog(null, "Въведете само една цифра ", " Грешка", JOptionPane.ERROR_MESSAGE);
+                            }
                             System.out.println(button.getComponent().getX()+"  "+button.getComponent().getY());
                             System.out.println(arr[button.getComponent().getX()][button.getComponent().getY()].getText());
                             int a=button.getComponent().getX();
